@@ -1,0 +1,4 @@
+NAME,DESIGNATION,WORK ASSIGNED,TASKS ASSIGNED,STATUS,PLANNED START,PLANNED FINISH,ACTUAL START,ACTUAL FINISH
+Prajwal ,Project Manager,Management,"meetings , calls ","In-progress , Delayed",11-09-2023,11-10-2023,13-09-2023,NA
+Abhishek Raj Singh,Project Manager,CAD,Design tools,Completed,13-08-2023,01-10-2023,01-09-2023,10-09-2023
+Atharv,Project Engineer ,Dashboard ,"Streamlit , Testing","In-progress , Not Started",10-09-2023,15-09-2023,11-09-2023,NA

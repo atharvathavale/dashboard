@@ -8,12 +8,12 @@ from datetime import datetime
 # import streamlit.components.v1 as components
 
 #Page heading 
-st.set_page_config(page_title="Dashboard", page_icon=":bar_chart:", layout="wide")
+st.set_page_config(page_title="Dashboard", page_icon="i4ilogo.png", layout="wide")
 st.title("PROJECT DASHBOARD")
 # Load the CSV data
 data = pd.read_csv('latest_data.csv')
 
-see_fulldata = st.expander('To view data👉')
+see_fulldata = st.expander('Click to expand and view all data')
 with see_fulldata:
     st.write(data)
 
@@ -24,6 +24,14 @@ with see_fulldata:
 # DataFrame
 df = pd.DataFrame(data)
 
+#GANTT CHART
+gantt_df = df[['Task Name','Baseline Start','Baseline Finish','Status']]
+gantt_df['START'] = pd.to_datetime(gantt_df['Baseline Start'], dayfirst=True)
+gantt_df['FINISH'] = pd.to_datetime(gantt_df['Baseline Finish'], dayfirst=True)
+#st.write(gantt_df)
+gantt = px.timeline(gantt_df, x_start="START", x_end="FINISH", y="Task Name", color="Status")
+st.header('GANTT CHART', divider='green')
+st.plotly_chart(gantt)
 
 #SECTION - PROGRESSBAR FOR PROJECT
 # Define the start date, end date, and current date
@@ -62,17 +70,20 @@ st.plotly_chart(fig)
 
 
 # SECTION - PIE CHART AND TABLE ON Hinderance
-df_hind = df[['Hinderance','Hinderance In','Hinderance Priority']]
-st.write(df_hind)
-status_counts = df['Hinderance Priority'].value_counts()
-fig = px.pie(
-        status_counts,
-        names=status_counts.index,
-        values=status_counts.values,
-        title='Hinderance priority distribution'
-    )
-st.title('Hinderance priority distribution')
-st.plotly_chart(fig)
+see_hinerdance = st.expander('Expand and view hinderances')
+with see_hinerdance:
+    df_hind = df[['Hinderance','Hinderance In','Hinderance Priority']]
+    #df_hind = df_hind[(df_hind["Hinderance"] != "") & (df_hind["Hinderance Priority"] != "")]
+    df_hind = df_hind.dropna()
+    status_counts = df['Hinderance Priority'].value_counts()
+    fig = px.pie(
+            status_counts,
+            names=status_counts.index,
+            values=status_counts.values
+        )
+    st.title('Hinderance distribution')
+    st.write(df_hind)
+    st.plotly_chart(fig)
 
 
 
@@ -89,16 +100,21 @@ st.header('Deadline soon approaching', divider='rainbow')
 st.write(deadline_df[['Resource Initials','Task Name','Status','Start','Baseline Finish','Duration']].head())
 
 
+
 #IMPACT4IMPACT LOGO
 st.sidebar.image("i4ilogo.png", use_column_width=True)
+
 
 # WORKS and DEADLINES CROSSED 
 df_works = df['Task Name']
 st.sidebar.header("Works in the project :",divider="rainbow")
 st.sidebar.write(df_works)
 df_crossed = df[(df['PLANNED FINISHH'] - current_date ).dt.days < 0]
+df_crossed["Days Crossed"] = (current_date - data["PLANNED FINISHH"]).dt.days
+
+# df_crossed = data[data["Days Crossed"] < 0]
 st.sidebar.header('Deadlines crossed', divider='red')
-st.sidebar.write(df_crossed[['Resource Initials','Task Name','Status','Start','Baseline Finish','Duration']].head())
+st.sidebar.write(df_crossed[['Resource Initials','Task Name','Days Crossed','Status','Start','Baseline Finish','Duration']].head())
 
 #MODEL VIEWER
 # Create a custom Streamlit component to display the 3D model

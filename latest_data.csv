@@ -1,7 +1,7 @@
 Task Name,Baseline Start,Baseline Finish,Baseline Duration,Duration,Start,Finish,Status,% Complete,Resource Initials,Hinderance,Hinderance In,Hinderance Priority
    Modelling and Analysis,Mon 04/09/23,Tue 12/09/23,9 days,8 days,Tue 12/09/23,Tue 19/09/23,Ongoing,2%,,Software key not valid,Software,High
       Estimate Preparation,Mon 04/09/23,Wed 06/09/23,3 days,2 days,Tue 12/09/23,Wed 13/09/23,Ongoing,25%,"Faysal,Harshith",,,
-      Static Load Analysis,Tue 05/09/23,Sat 09/09/23,5 days,5 days,Tue 12/09/23,Sat 16/09/23,Delayed,0%,"Usha,Faizal",,,
+      Static Load Analysis,Tue 05/09/23,Sat 09/09/23,5 days,5 days,Tue 12/09/23,Sat 16/09/23,Delayed,25%,"Usha,Faizal",,,
       Live Load Analysis,Thu 07/09/23,Tue 12/09/23,6 days,6 days,Thu 14/09/23,Tue 19/09/23,Not Started,0%,"Musaveer,Rayan",,,
       Sesmic Load Analysis,Sat 09/09/23,Tue 12/09/23,4 days,4 days,Sat 16/09/23,Tue 19/09/23,Not Started,0%,"Rayan,Musaveer",,,
       Remodelling as per Analysis,Wed 06/09/23,Tue 12/09/23,7 days,7 days,Wed 13/09/23,Tue 19/09/23,Not Started,0%,"Usha,Faizal,Musaveer,Rayan",,,

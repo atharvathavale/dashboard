@@ -33,6 +33,7 @@ gantt = px.timeline(gantt_df, x_start="START", x_end="FINISH", y="Task Name", co
 st.header('GANTT CHART', divider='green')
 st.plotly_chart(gantt)
 
+
 #SECTION - PROGRESSBAR FOR PROJECT
 # Define the start date, end date, and current date
 start_date = datetime(2023, 9, 4)
@@ -106,15 +107,19 @@ st.sidebar.image("i4ilogo.png", use_column_width=True)
 
 
 # WORKS and DEADLINES CROSSED 
-df_works = df['Task Name']
-st.sidebar.header("Works in the project :",divider="rainbow")
+# def progress_bar(percent):
+#         return f"[{int(percent)}%]({percent})"
+
+df_works = df[['Task Name','% Complete']]
+st.sidebar.header("Tasks in the project :",divider="rainbow")
 st.sidebar.write(df_works)
 df_crossed = df[(df['PLANNED FINISHH'] - current_date ).dt.days < 0]
 df_crossed["Days Crossed"] = (current_date - data["PLANNED FINISHH"]).dt.days
 
 # df_crossed = data[data["Days Crossed"] < 0]
 st.sidebar.header('Deadlines crossed', divider='red')
-st.sidebar.write(df_crossed[['Resource Initials','Task Name','Days Crossed','Status','Start','Baseline Finish','Duration']].head())
+df_crossed_filtered = df_crossed[df_crossed['Status'] != 'Completed']
+st.sidebar.write(df_crossed_filtered[['Resource Initials','Task Name','Status','Start','Baseline Finish','Duration']].head())
 
 #MODEL VIEWER
 # Create a custom Streamlit component to display the 3D model

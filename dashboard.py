@@ -74,10 +74,10 @@ st.plotly_chart(fig)
 # SECTION - PIE CHART AND TABLE ON Hinderance
 see_hinerdance = st.expander('Expand and view hindrances')
 with see_hinerdance:
-    df_hind = df[['Hindrance','Hindrance In','Hindrance Priority']]
+    df_hind = df[['Hinderance','Hinderance In','Hinderance Priority']]
     #df_hind = df_hind[(df_hind["Hinderance"] != "") & (df_hind["Hinderance Priority"] != "")]
     df_hind = df_hind.dropna()
-    status_counts = df['Hindrance Priority'].value_counts()
+    status_counts = df['Hinderance Priority'].value_counts()
     fig = px.pie(
             status_counts,
             names=status_counts.index,

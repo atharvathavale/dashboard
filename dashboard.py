@@ -3,6 +3,10 @@ import pandas as pd
 import plotly.express as px
 import matplotlib.pyplot as plt
 from datetime import datetime
+import streamlit_analytics
+
+streamlit_analytics.start_tracking()
+
 # import ifcopenshell
 # from pythreejs import *
 # import streamlit.components.v1 as components
@@ -101,11 +105,6 @@ st.header('Deadline soon approaching', divider='rainbow')
 st.write(deadline_df[['Resource Initials','Task Name','Status','Start','Baseline Finish','Duration']].head())
 
 
-
-#IMPACT4IMPACT LOGO
-st.sidebar.image("i4ilogo.png", use_column_width=True)
-
-
 # WORKS and DEADLINES CROSSED 
 # def progress_bar(percent):
 #         return f"[{int(percent)}%]({percent})"
@@ -121,6 +120,10 @@ st.sidebar.header('Deadlines crossed', divider='red')
 df_crossed_filtered = df_crossed[df_crossed['Status'] != 'Completed']
 st.sidebar.write(df_crossed_filtered[['Resource Initials','Task Name','Status','Start','Baseline Finish','Duration']].head())
 
+#IMPACT4IMPACT LOGO
+st.sidebar.image("i4ilogo.png", use_column_width=True)
+
+
 #MODEL VIEWER
 # Create a custom Streamlit component to display the 3D model
 
@@ -131,3 +134,5 @@ st.sidebar.write(df_crossed_filtered[['Resource Initials','Task Name','Status','
 #     st.write(ifc_file_path.schema)
 #     walls = ifc_file_path.by_type('IfcWall')
 #     st.write(walls.get_info())
+
+streamlit_analytics.stop_tracking()

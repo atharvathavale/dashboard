@@ -3,9 +3,6 @@ import pandas as pd
 import plotly.express as px
 import matplotlib.pyplot as plt
 from datetime import datetime
-import streamlit_analytics
-
-streamlit_analytics.start_tracking()
 
 # import ifcopenshell
 # from pythreejs import *
@@ -134,5 +131,3 @@ st.sidebar.image("i4ilogo.png", use_column_width=True)
 #     st.write(ifc_file_path.schema)
 #     walls = ifc_file_path.by_type('IfcWall')
 #     st.write(walls.get_info())
-
-streamlit_analytics.stop_tracking()

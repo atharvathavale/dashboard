@@ -1,6 +1,6 @@
 Task Name,Baseline Start,Baseline Finish,Baseline Duration,Duration,Start,Finish,Predecessors,% Complete,Resource Initials,Hinderance,Hinderance In,Hinderance Priority,Status
 Collaborative Project,Mon 04/09/23,Thu 02/11/23,60 days,60 days,Mon 04/09/23,Thu 02/11/23,,25%,,,,,
-   Project Start to Finish,Mon 04/09/23,Mon 04/09/23,1 day,1 day,Mon 04/09/23,Mon 04/09/23,,100%,,,,,
+   Project Start to Finish,Mon 04/09/23,Mon 04/09/23,1 day,1 day,Mon 04/09/23,Mon 04/09/23,,25%,,,,,
 Modelling and Analysis,Mon 04/09/23,Tue 12/09/23,9 days,30 days,Tue 12/09/23,Wed 11/10/23,,34%,,Software key not valid,Software,High,Ongoing
    Estimate Preparation,Mon 04/09/23,Wed 06/09/23,3 days,18 days,Tue 12/09/23,Fri 29/09/23,2SS,75%,"Faysal,Harshith",,,,Ongoing
    Static Load Analysis,Tue 05/09/23,Sat 09/09/23,5 days,24 days,Tue 12/09/23,Thu 05/10/23,"2SS,5SS",25%,"Usha,Faizal",,,,Ongoing

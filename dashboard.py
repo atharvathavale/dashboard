@@ -39,11 +39,21 @@ st.plotly_chart(gantt)
 # Define the start date, end date, and current date
 start_date = datetime(2023, 9, 4)
 end_date = datetime(2023, 11, 4)
-current_date = datetime.now()
+#end_date = datetime(2023, 11, 26)
 # Calculate the progress as a percentage
 total_days = (end_date - start_date).days
+current_date = datetime.now()
 progress_days = (current_date - start_date).days
-progress_percentage = min(progress_days / total_days, 100)
+if current_date > end_date:
+    progress_percentage = 100
+    days_remaining = 0
+    
+else:
+    progress_percentage = min(progress_days / total_days, 100)*100
+    days_remaining = total_days-progress_days
+
+#st.write(progress_days)
+
 # Display the progress bar
 st.title("Project progress")
 st.progress(progress_percentage)
@@ -53,9 +63,9 @@ with col1:
 with col2:
     st.write("DAYS COMPLETED:",progress_days)
 with col3:
-    st.write("DAYS REMAINING:", total_days-progress_days)
+    st.write("DAYS REMAINING:", days_remaining)
 with col4:
-    st.write(f"Progress: {progress_percentage*100:.2f}%")
+    st.write(f"Progress: {progress_percentage:.2f}%")
 
 
 
